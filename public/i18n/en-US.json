@@ -2,6 +2,8 @@
   "menu": {
     "dashboard": "Dashboard",
     "design": "Design",
+    "users-management": "Users managment",
+    "users-management.users-list": "Users list",
     "design.colors": "Color System",
     "design.icons": "Material Icons",
     "material": "Material",

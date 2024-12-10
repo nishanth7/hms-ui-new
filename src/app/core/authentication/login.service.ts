@@ -12,7 +12,7 @@ export class LoginService {
   protected readonly http = inject(HttpClient);
 
   login(username: string, password: string, rememberMe = false) {
-    return this.http.post<Token>('/auth/login', { username, password, rememberMe });
+    return this.http.post<Token>('/v1/auth/login', { username, password, rememberMe });
   }
 
   refresh(params: Record<string, any>) {

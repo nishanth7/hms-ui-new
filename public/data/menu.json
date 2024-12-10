@@ -11,6 +11,30 @@
       }
     },
     {
+      "route": "users-management",
+      "name": "users-management",
+      "type": "sub",
+      "icon": "color_lens",
+      "label": {
+        "color": "azure-50",
+        "value": "New"
+      },
+      "children": [
+        {
+          "route": "users-list",
+          "name": "users-list",
+          "type": "link",
+          "icon": "colorize"
+        }
+      ],
+      "permissions": {
+        "only": [
+          "ADMIN",
+          "MANAGER"
+        ]
+      }
+    },
+    {
       "route": "design",
       "name": "design",
       "type": "sub",
