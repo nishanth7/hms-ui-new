@@ -50,8 +50,8 @@ export class AuthService {
       );
   }
 
-  logout() {
-    return this.loginService.logout().pipe(
+  logout(email: any) {
+    return this.loginService.logout(email).pipe(
       tap(() => this.tokenService.clear()),
       map(() => !this.check())
     );

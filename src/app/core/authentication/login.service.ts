@@ -23,8 +23,8 @@ export class LoginService {
     return this.http.post<Token>('/auth/refresh', params);
   }
 
-  logout() {
-    return this.http.post<any>('/auth/logout', {});
+  logout(email: string) {
+    return this.http.post<any>('/v1/auth/logout', { email });
   }
 
   me() {

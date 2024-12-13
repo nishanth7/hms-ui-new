@@ -57,7 +57,7 @@ export class StartupService {
 
     // Tips: Alternatively you can add permissions with role at the same time.
     // this.rolesService.addRolesWithPermissions({ ADMIN: permissions });
-
+    this.rolesService.flushRoles();
     this.loginService.permissions().subscribe((res: any) => {
       console.log(res);
       // const role: keyof typeof res = user['role'];
@@ -65,7 +65,9 @@ export class StartupService {
       const permissions = res[role];
       this.permissonsService.loadPermissions(permissions);
       this.rolesService.flushRoles();
-      this.rolesService.addRolesWithPermissions({ [role]: permissions });
+      if (role && permissions) {
+        this.rolesService.addRolesWithPermissions({ [role]: permissions });
+      }
       //  this.rolesService.addRoles({ role: permissions });
     });
   }

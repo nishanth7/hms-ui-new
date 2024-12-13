@@ -38,7 +38,7 @@ export class ProfileLayoutComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout().subscribe(() => {
+    this.auth.logout(this.user.email).subscribe(() => {
       this.router.navigateByUrl('/auth/login');
     });
   }
