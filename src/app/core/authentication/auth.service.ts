@@ -35,7 +35,7 @@ export class AuthService {
 
   login(username: string, password: string, rememberMe = false) {
     return this.loginService.login(username, password, rememberMe).pipe(
-      tap(token => this.tokenService.set(token)),
+      tap(resp => this.tokenService.set(resp)),
       map(() => this.check())
     );
   }
@@ -63,6 +63,10 @@ export class AuthService {
 
   menu() {
     return iif(() => this.check(), this.loginService.menu(), of([]));
+  }
+
+  permissions() {
+    return iif(() => this.check(), this.loginService.permissions(), of([]));
   }
 
   private assignUser() {

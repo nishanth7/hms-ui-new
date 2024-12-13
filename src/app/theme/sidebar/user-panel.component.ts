@@ -28,6 +28,8 @@ export class UserPanelComponent implements OnInit {
   user!: User;
 
   ngOnInit(): void {
-    this.auth.user().subscribe(user => (this.user = user));
+    this.auth.user().subscribe(user => {
+      this.user = user;
+    });
   }
 }

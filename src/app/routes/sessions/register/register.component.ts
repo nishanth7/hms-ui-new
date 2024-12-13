@@ -11,8 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoginService } from '@core';
 
 @Component({
   selector: 'app-register',
@@ -33,6 +34,11 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class RegisterComponent {
   private readonly fb = inject(FormBuilder);
+
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
   registerForm = this.fb.nonNullable.group(
     {
@@ -60,5 +66,15 @@ export class RegisterComponent {
         return null;
       }
     };
+  }
+
+  registerUser() {
+    if (this.registerForm.valid) {
+      this.loginService
+        .register(this.registerForm.value.username, this.registerForm.value.password)
+        .subscribe(res => {
+          this.router.navigateByUrl('/');
+        });
+    }
   }
 }
